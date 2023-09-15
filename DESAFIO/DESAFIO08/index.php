@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Desafio 07</title>
+    <title>Desafio 08</title>
 </head>
 <body>
     <?php 
         //capturando os dados do formulario retroalimentado
         $valor1 = $_GET['v1'] ?? 0;
-        $sm = 1380;
+       
     ?>
     <main> 
         <h1>Informe um número</h1>
@@ -29,8 +29,8 @@
             $raizc = pow ($valor1,(1/3));
             
             echo "<p>Analisando o <strong>número " . number_format($valor1, 0, ".", ",") . "</strong>, temos:</p>";
-            echo "<ul><li>A sua Raiz quadrada é <strong> " . number_format($raizq, 3, ".", ",") . "</strong>.</li>";
-            echo "<li>A sua Raiz cúbica é <strong> " . number_format($raizc, 3, ".", ",") . "</strong>.</li></ul>";
+            echo "<ul><li>A sua Raiz quadrada é <strong> " . number_format($raizq, 2, ",", ".") . "</strong>.</li>";
+            echo "<li>A sua Raiz cúbica é <strong> " . number_format($raizc, 2, ",", ".") . "</strong>.</li></ul>";
        
         ?>
     </section>    
