@@ -18,9 +18,10 @@
         <h1>Reajustador de Preços</h1>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
             <label for="v1">Preço do produto (R$): </label>
-            <input type="number" name="prod" id="v1" value="<?=$valor?>" step="0">
-            <label for="v1">Qual será o percentual de reajuste? %</label>
-            <input type="number" name="porc" id="v1" value="<?=$porcentagem?>" step="0">
+            <input type="number" name="prod" id="v1" value="<?=$valor?>" step="0.01">
+
+            <label for="reaj">Qual será o percentual de reajuste? (<strong><span id="p"></span>%</strong>)</label> 
+            <input type="range" name="porc" id="reaj" step="1" min="0" max="100" oninput="mudaValor()" value="<?=$porcentagem?>">
             <input type="submit" value="Resultado do reajuste">
         </form>
     </main>
@@ -30,16 +31,21 @@
     
         <?php 
             
-            $total =  $porcentagem / 100;
-            $result = $total * $valor;
-            $valorfinal = $valor + $result;
-
+            $aumento = $valor * $porcentagem / 100;
+            $reajuste = $valor + $aumento;
             
             
-            echo "<p>O produto que custava R$".  number_format($valor, 2, ".", ",") , " com <strong>$porcentagem% de aumento</strong> vai passar a custar <strong>" . number_format($valorfinal, 2) ."</strong> a partir de agora.";
+            echo "<p>O produto que custava R$".  number_format($valor, 2, ".", ",") , " com <strong>$porcentagem% de aumento</strong> vai passar a custar <strong> R$" . number_format($reajuste, 2) ."</strong> a partir de agora.";
             
         ?>
     </section>    
-    
+        <script>
+            mudaValor()
+
+            function mudaValor() {
+                p.innerText = reaj.value
+            }
+
+        </script>
 </body>
 </html>
