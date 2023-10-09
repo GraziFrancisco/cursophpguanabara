@@ -7,9 +7,7 @@ class Lutador implements ControleLutador {
     //atributo
     private $nome;
     private $nacionalidade;
-    private $idade;
-    private $altura;
-    private $peso;
+    private $idade, $altura, $peso;
     private $categoria;
     private $vitorias;
     private $derrotas;
@@ -18,27 +16,39 @@ class Lutador implements ControleLutador {
 
     //metodos
     public function apresentar(){
-
+        echo "<p>--------------------------------------------</p>";
+        echo "<p>CHEGOU A HORA DO LUTADOR: " . $this->getNome(). "!!!";
+        echo " Veio diretamente de: " . $this->getNacionalidade();
+        echo ". Tem " . $this->getIdade() . " Anos, " . " e tem " . $this->getAltura() . " m de Altura.";
+        echo " Pesando: " . $this->getPeso() . " Kg. ";
+        echo "<br>Ele tem: " . $this->getVitorias() . " vitórias, " . $this->getDerrotas() . " derrotas ";
+        echo " e empatou: " . $this->getEmpates() . " vezes.</p>";  
+        echo "<p>--------------------------------------------</p><br>";  
+         
 
     }
 
     public function status(){
+        echo "<p>--------------------------------------------</p>";
+        echo "<p>Lutador: " . $this->getNome() . " é um peso " . $this->getCategoria();
+        echo " E já ganhou " . $this->getVitorias() . " vezes, perdeu " .  $this->getDerrotas() . " vezes, e empatou " .$this->getEmpates() . " vezes! </p>";
+        echo "<p>--------------------------------------------</p><br>";
 
         
     }
 
     public function ganharLuta(){
-
+        $this->setVitorias($this->getVitorias() + 1);
         
     }
 
     public function perderLuta(){
-
+        $this->setDerrotas($this->getDerrotas() + 1);
         
     }
 
     public function empatarLuta(){
-
+        $this->setEmpates($this->getEmpates() + 1);
         
     }
     
@@ -50,7 +60,7 @@ class Lutador implements ControleLutador {
         $this->nacionalidade = $na;
         $this->idade = $id;
         $this->altura = $al;
-        $this->peso = $pe;
+        $this->setPeso($pe);
         $this->vitorias = $vi;
         $this->derrotas = $de;
         $this->empates = $em;
@@ -67,6 +77,10 @@ class Lutador implements ControleLutador {
 
     public function getIdade(){
         return $this->idade;
+    }
+
+    public function getAltura(){
+        return $this->altura;
     }
 
     public function getPeso(){
@@ -118,13 +132,13 @@ class Lutador implements ControleLutador {
 
     public function setCategoria() {
         
-        if ($this->getpeso()<52.2) {
+        if ($this->peso <52.2) {
             $this->categoria = "Inválido";
-        } else if ($this->getpeso()<=70.3) {
+        } elseif ($this->peso<=70.3) {
             $this->categoria = "Leve";
-        } else if ($this->getpeso()<=83.9){
+        } elseif ($this->peso<=83.9){
             $this->categoria = "Médio";
-        } else if ($this->getpeso()<=120.2){
+        } elseif ($this->peso<=120.2){
             $this->categoria = "Pesado";
         } else {
             $this->categoria = "Inválido";
@@ -150,6 +164,3 @@ class Lutador implements ControleLutador {
 }
 
 
-
-
-?>
